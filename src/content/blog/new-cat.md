@@ -1,7 +1,7 @@
 ---
 title: 5 Things That Make a Great Corporate Event
 slug: new-cat
-image: src/assets/images/pexels-minan1398-1003994.jpg
+image: src/assets/images/lunch-1.jpg
 imageAlt: Corporate event dining
 excerpt: The difference between a forgettable event and an exceptional one comes down to these five things.
 publishDate: 2024-01-21
