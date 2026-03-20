@@ -1,0 +1,18 @@
+---
+const { color = "teal", title = "" }: BadgeProps = Astro.props;
+
+interface BadgeProps {
+	color?: "red" | "teal";
+	title?: string;
+}
+
+const colors = {
+	fuchsia: "bg-gray-500/5 text-gray-500 ring-1 ring-gray-500",
+	teal: "bg-gray-500/5 text-gray-500 ring-1 ring-gray-500",
+	white: "bg-white",
+};
+---
+
+<span class={`inline-flex not-prose items-center mb-4 rounded-full px-3 py-1 text-base font-semibold ${colors[color]}`}
+	>{title}</span
+>

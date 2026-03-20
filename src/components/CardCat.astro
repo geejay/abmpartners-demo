@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+const { cat } = Astro.props;
+
+if (!cat) {
+	return;
+}
+---
+
+<article
+	class="transition hover:scale-105 duration-500 bg-gray-900"
+	data-cat={JSON.stringify(cat.data)}
+>
+	<a href={`/cats/${cat.id}`} class="h-full flex flex-col">
+		<div class="relative">
+			<Image
+				src={cat.data.image}
+				alt={cat.data.name}
+				class:list={"w-full aspect-[6/4] object-cover opacity-40"}
+				transition:name={`cat-image-${cat.id}`}
+			/>
+			<div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/80"></div>
+		</div>
+
+		<div class="px-6 py-6 flex flex-col grow border-x border-b border-gray-700 overflow-hidden">
+			<h2 class="h5 tracking-widest uppercase text-white" transition:name={`cat-title-${cat.id}`}>{cat.data.name}</h2>
+			<p class="mt-3 text-gray-400 text-sm leading-relaxed" transition:name={`cat-description-${cat.id}`}>{cat.data.description}</p>
+		</div>
+	</a>
+</article>

@@ -1,0 +1,10 @@
+---
+import { Image } from "astro:assets";
+// import Logo from "~/assets/images/logo-pawstronaut.svg";
+import Logo from "~/assets/images/logo-with-text.png";
+---
+
+<div class="flex items-center gap-2 xl:gap-4">
+	<Image class="w-auto h-7 lg:h-9 xl:h-11 shrink-0" src={Logo} alt="ABM Partners logo." />
+	<h4 class="text-xs font-semibold leading-tight whitespace-nowrap">ABM Partners</h4>
+</div>

@@ -1,0 +1,14 @@
+---
+import { socialMedia } from "~/data/config.js";
+import IconX from "~/assets/icons/x.svg";
+import IconLinkedIn from "~/assets/icons/linkedin.svg";
+---
+
+{
+	Object.values(socialMedia).map((item: { url: string; label: string; icon: string }) => (
+		<a href={item.url} target="_blank" aria-label={item.label} rel="noopener noreferrer" class="social-media-icon">
+			{item.icon === "x" && <IconX class="size-7 hover:text-gray-300 transition p-1 -m-1" />}
+			{item.icon === "linkedin" && <IconLinkedIn class="size-7 hover:text-gray-300 transition p-1 -m-1" />}
+		</a>
+	))
+}

@@ -1,0 +1,53 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import Members from "~/components/Members.astro";
+import Article from "~/components/Article.astro";
+---
+
+<Layout>
+	<Section class:list={'bg-white'}>
+		<Container>
+			<Heading>
+				<h1 slot="heading-title" class="font-black text-gray-500 h2">About Us</h1>
+				<p slot="heading-content">
+					We are a specialist corporate event management company dedicated to delivering exceptional
+					experiences for organisations across Australia. From strategy through to execution, our team
+					brings precision, creativity, and professionalism to every event we touch.
+				</p>
+			</Heading>
+
+			<Members />
+		</Container>
+	</Section>
+
+	<Section class:list={'bg-white'}>
+		<Container>
+			<Article>
+				<h2 class="font-bold text-gray-500 h3">Our Story</h2>
+				<p>
+					Founded in 2010, ABM Partners has grown from a boutique event consultancy into one of
+					Australia's most trusted corporate event management firms. Over the years, we have delivered
+					hundreds of events — from intimate executive roundtables to large-scale national conferences —
+					building a reputation for meticulous planning, creative thinking, and flawless on-the-day
+					execution.
+				</p>
+				<h2 class="font-bold text-gray-500 h3">Our Mission</h2>
+				<p>
+					Our mission is to transform our clients' objectives into memorable, high-impact events. We
+					believe that a well-executed event is one of the most powerful tools a business has — for
+					building relationships, driving engagement, and communicating vision. We work closely with
+					our clients to understand their goals and deliver experiences that exceed expectations.
+				</p>
+				<h2 class="font-bold text-gray-500 h3">Work With Us</h2>
+				<p>
+					Whether you're planning a flagship annual conference, a leadership retreat, or a series of
+					breakfast briefings, we'd love to hear from you. Get in touch with our team to discuss your
+					next event and find out how ABM Partners can help bring it to life.
+				</p>
+			</Article>
+		</Container>
+	</Section>
+</Layout>

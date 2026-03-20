@@ -1,0 +1,13 @@
+# humanstxt.org/Standard.html
+# This file is used to provide information about the people who have contributed to building the website.
+
+# DEVELOPER
+Name: Test
+Company: Test
+Location: Test
+LinkedIn: https://linkedin.com/in/abmpartners
+Website: https://abmpartners.com.au
+Email: info@abmpartners.com.au
+
+# SITE
+Last update: 1-1-2026

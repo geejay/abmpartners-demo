@@ -1,50 +1,163 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import {Image, Picture} from "astro:assets";
+import Hero from "~/components/Hero.astro";
+import Button from "~/components/Button.astro";
+import Faq from "~/components/Faq.astro";
+import CallToAction from "~/components/CallToAction.astro";
+import ShowCats from "~/components/ShowCats.astro";
+import Heading from "~/components/Heading.astro";
+
+// Images
+import Background from "~/assets/images/background.png";
+import LunchOne from "~/assets/images/lunch-1.jpg";
+import FormContact from "~/components/forms/FormContact.astro";
+
+// Faq
+const faq = [
+    {
+        question: "How far in advance should we book?",
+        answer: "We recommend reaching out at least 8–12 weeks before your event. For larger conferences or gala dinners, 4–6 months is ideal. That said, we can accommodate shorter lead times — contact us and we'll let you know what's possible.",
+    },
+    {
+        question: "Do you manage both in-person and virtual events?",
+        answer: "Yes. We handle in-person, virtual, and hybrid formats. Our virtual roundtable and webinar packages include full platform setup, moderation support, and post-event content distribution.",
+    },
+    {
+        question: "What does your event management fee cover?",
+        answer: "Our fee covers end-to-end coordination: venue sourcing, supplier management, AV production, catering liaison, on-site staffing, and post-event reporting. We provide a detailed scope of services with every quote.",
+    },
+    {
+        question: "Can you handle events interstate or internationally?",
+        answer: "Absolutely. We have experience delivering events across Australia and internationally. We work with a trusted network of local suppliers and venue partners to ensure consistent quality wherever your event takes place.",
+    },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title="Home" pageTitle="Home" description="Corporate event planning and management by ABM Partners.">
+    <Section class:list={"relative"}>
+        <Picture
+                src={Background}
+                alt="Cat"
+                class:list={"absolute inset-0 w-full h-full object-cover"}
+                loading={"eager"}
+                fetchpriority={"high"}
+        />
+        <div class="bg-gradient-to-r from-gray-200/80 to-gray-600/80 absolute inset-0"></div>
+        <Container class:list={"relative z-10 h-full lg:min-h-svh lg:h-svh"}>
+            <div class="flex items-center h-full justify-center">
+                <div class="prose prose-xl prose-invert text-white lg:text-center text-balance">
+                    <h1 class="text-5xl lg:text-8xl mb-0">ABM Partners Events</h1>
+                    <p>
+                        From high-stakes board retreats to industry-defining conferences, we transform your objectives
+                        into unforgettable experiences. Our team specializes in precision planning and strategic
+                        execution, ensuring your corporate events are as seamless as they are impactful.
+                    </p>
+
+                    <div class="not-prose mt-8">
+                        <Button url="/cats" color="white"> Our packages</Button>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </Section>
+
+    <Section class:list={"bg-white"}>
+        <Container>
+            <Hero>
+                <div slot="hero-content-left" class="prose">
+                    <h2 class="h2 text-gray-500">Events that deliver results.</h2>
+                    <p class="leading-loose">
+                        From intimate executive lunches to large-scale conferences, we handle every detail so your team
+                        can focus on what matters. Precision planning, expert facilitation, and flawless execution —
+                        every time.
+                    </p>
+
+                    <div class="not-prose mt-16">
+                        <Button url="/cats">View our packages</Button>
+                    </div>
+                </div>
+                <div slot="hero-content-right" class="-rotate-1">
+                    <Image src={LunchOne} alt="Corporate event" class:list={"w-full h-full object-cover shadow"}/>
+                </div>
+            </Hero>
+        </Container>
+    </Section>
+
+    <Section>
+        <Container>
+            <Heading>
+                <h2 slot="heading-title" class="h2 text-gray-500">Available Packages</h2>
+                <p slot="heading-content">
+                    Whether you need a structured breakfast briefing, a landmark gala dinner, or something entirely bespoke,
+                    we have a package to suit your objectives and budget.
+                </p>
+            </Heading>
+
+            <ShowCats cats={["breakfast", "lunch", "dinner", "half-day", "one-day", "bespoke"]}/>
+        </Container>
+    </Section>
+
+    <Section class:list={"bg-white"}>
+        <Container>
+            <Hero invert>
+                <div slot="hero-content-left" class="prose">
+                    <h2 class="h2 text-gray-500">FAQ</h2>
+                    <Faq items={faq} color="fuchsia"/>
+                </div>
+                <div slot="hero-content-right" class="rotate-1">
+                    <Image src={LunchOne} alt="Corporate event dining" class:list={"w-full h-full object-cover shadow"}/>
+                </div>
+            </Hero>
+        </Container>
+    </Section>
+
+    <Section class:list={"relative"}>
+        <Image src={Background} alt="Cat" class:list={"absolute inset-0 w-full h-full object-cover"}/>
+        <div class="bg-gradient-to-r from-gray-900/90 to-gray-700/80 absolute inset-0"></div>
+
+        <Container class:list={"relative z-10"}>
+            <CallToAction
+                    title="Ready to start planning your next event?"
+                    link={{title: "Get in touch", url: "/contact", color: "white"}}
+            />
+        </Container>
+    </Section>
+
+    <Section>
+        <Container>
+            <Heading>
+                <h2 slot="heading-title" class="h2 text-gray-500">Past Attendees</h2>
+                <p slot="heading-content">
+                    We're proud to have worked with leading organisations across a range of industries.
+                </p>
+            </Heading>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-gray-200 border border-gray-200">
+                {[
+                    "Deloitte", "Westpac", "Telstra", "Macquarie", "Aurecon", "KPMG",
+                    "ANZ", "Lendlease", "Optus", "PwC", "Transurban", "Mirvac",
+                ].map((name) => (
+                    <div class="bg-white flex items-center justify-center px-6 py-10">
+                        <span class="text-gray-400 font-bold text-sm tracking-widest uppercase">{name}</span>
+                    </div>
+                ))}
+            </div>
+        </Container>
+    </Section>
+
+    <Section>
+        <Container>
+            <div class="max-w-2xl mx-auto">
+                <Heading>
+                    <h2 slot="heading-title" class="h2">Contact</h2>
+                    <p slot="heading-content">Get in touch with us for any questions or inquiries.</p>
+                </Heading>
+
+                <FormContact />
+            </div>
+        </Container>
+    </Section>
+</Layout>
