@@ -14,7 +14,7 @@ export default defineConfig({
 		alpinejs(),
 		mdx(),
 	],
-	output: "static",
+	output: "server",
 	devToolbar: {
 		enabled: false,
 	},
