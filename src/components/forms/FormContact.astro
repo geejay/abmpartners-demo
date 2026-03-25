@@ -1,7 +1,27 @@
 ---
 ---
 
-<form action="#">
+<form
+    action="/api/contact"
+    method="POST"
+    x-data="{
+        status: 'idle',
+        async submit(e) {
+            e.preventDefault();
+            this.status = 'loading';
+            const form = e.target;
+            const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+            const json = await res.json();
+            if (json.success) {
+                this.status = 'success';
+                form.reset();
+            } else {
+                this.status = 'error';
+            }
+        }
+    }"
+    @submit="submit"
+>
     <div class="flex flex-col gap-8">
         <div>
             <label for="name">Name</label>
@@ -24,8 +44,8 @@
             </div>
         </div>
 
-        <div>
-            <button type="submit" class="button button-teal group !px-8">
+        <div class="flex flex-col gap-4">
+            <button type="submit" class="button button-teal group !px-8" :disabled="status === 'loading'">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -40,8 +60,15 @@
                         d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
                     ></path>
                 </svg>
-                Send
+                <span x-text="status === 'loading' ? 'Sending…' : 'Send'">Send</span>
             </button>
+
+            <p x-show="status === 'success'" x-cloak class="text-green-600 font-medium">
+                Your message has been sent. We'll be in touch soon!
+            </p>
+            <p x-show="status === 'error'" x-cloak class="text-red-600 font-medium">
+                Something went wrong. Please try again or email us directly.
+            </p>
         </div>
     </div>
 </form>

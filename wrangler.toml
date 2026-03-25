@@ -1,0 +1,8 @@
+name = "abmpartners-demo"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "./dist"
+
+# Set secrets via: npx wrangler secret put RESEND_API_KEY
+# Optional overrides (set as secrets too if desired):
+#   CONTACT_TO_EMAIL   - where to send enquiries (default: info@abmpartners.com.au)
+#   CONTACT_FROM_EMAIL - sender address (must be verified in Resend, default: noreply@abmpartners.com.au)

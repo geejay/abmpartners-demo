@@ -20,7 +20,7 @@ const { cat } = Astro.props;
 ---
 
 <Layout>
-	<Section class="bg-white">
+	<Section class="theme-section-alt">
 		<Container>
 			<div class="bg-white max-w-4xl mx-auto">
 				<Image
@@ -31,7 +31,7 @@ const { cat } = Astro.props;
 				/>
 
 				<div class="prose max-w-none">
-					<h1 class="h2 text-gray-500 mt-16" transition:name={`cat-title-${cat.id}`}>{cat.data.name}</h1>
+					<h1 class="h2 theme-heading mt-16" transition:name={`cat-title-${cat.id}`}>{cat.data.name}</h1>
 					<p class="leading-loose" transition:name={`cat-description-${cat.id}`}>{cat.data.description}</p>
 					<div class="not-prose">
 						<Button
@@ -46,9 +46,9 @@ const { cat } = Astro.props;
 		</Container>
 	</Section>
 
-	<Section class:list={"bg-white"}>
+	<Section class:list={"theme-section-alt"}>
 		<Container>
-			<div class="overflow-hidden bg-white ring ring-gray-500 rounded-2xl max-w-4xl mx-auto">
+			<div class="overflow-hidden bg-white theme-ring rounded-2xl max-w-4xl mx-auto">
 				<div class="px-4 py-8 sm:px-6">
 					<h3>Information</h3>
 					<p class="mt-4 max-w-2xl">
@@ -127,9 +127,9 @@ const { cat } = Astro.props;
 		</Container>
 	</Section>
 
-	<Section class:list={"bg-white scroll-mt-24"} id="adoption-form">
+	<Section class:list={"theme-section-alt scroll-mt-24"} id="adoption-form">
 		<Container>
-			<div class="max-w-4xl mx-auto ring ring-gray-500 rounded-2xl px-4 py-8 sm:px-6">
+			<div class="max-w-4xl mx-auto theme-ring rounded-2xl px-4 py-8 sm:px-6">
 				<h3>I'm interested</h3>
 				<p class="mt-4 max-w-2xl mb-16 text-balance">
 					I would love to adopt {cat.data.name}! Please contact me with more information about the adoption!

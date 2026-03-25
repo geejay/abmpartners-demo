@@ -1,0 +1,94 @@
+---
+---
+
+<div x-data="themeSelector()" class="relative">
+	<button
+		@click="open = !open"
+		:aria-expanded="open"
+		aria-label="Select colour theme"
+		class="flex items-center gap-1.5 px-2 py-1.5 rounded-md hover:bg-gray-100 transition text-sm font-medium text-gray-600"
+	>
+		<span
+			class="size-4 rounded-full border border-gray-200 shadow-sm flex-shrink-0 transition-colors duration-300"
+			:style="`background-color: ${currentTheme().color}`"
+		></span>
+		<span class="max-xl:hidden" x-text="currentTheme().name"></span>
+		<svg class="size-3 text-gray-400 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+			<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+		</svg>
+	</button>
+
+	<div
+		x-show="open"
+		@click.outside="open = false"
+		x-transition:enter="transition ease-out duration-100"
+		x-transition:enter-start="opacity-0 translate-y-1"
+		x-transition:enter-end="opacity-100 translate-y-0"
+		x-transition:leave="transition ease-in duration-75"
+		x-transition:leave-start="opacity-100 translate-y-0"
+		x-transition:leave-end="opacity-0 translate-y-1"
+		x-cloak
+		class="absolute right-0 top-full mt-2 w-72 bg-white rounded-lg shadow-lg border border-gray-100 p-2 z-50"
+	>
+		<div class="grid grid-cols-2 gap-0.5">
+			<template x-for="theme in themes" :key="theme.id">
+				<button
+					@click="selectTheme(theme.id)"
+					class="flex items-center gap-2 px-2.5 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition"
+					:class="{ 'font-semibold bg-gray-50': current === theme.id }"
+				>
+					<span class="size-3.5 rounded-full border border-gray-200 shadow-sm flex-shrink-0" :style="`background-color: ${theme.color}`"></span>
+					<span x-text="theme.name" class="truncate"></span>
+					<svg x-show="current === theme.id" class="size-3 ml-auto flex-shrink-0 text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+					</svg>
+				</button>
+			</template>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	function themeSelector() {
+		var themes = [
+			{ id: 'default',   name: 'Midnight',  color: '#1e40af' },
+			{ id: 'royal',     name: 'Royal',     color: '#4c1d95' },
+			{ id: 'indigo',    name: 'Indigo',    color: '#312e81' },
+			{ id: 'plum',      name: 'Plum',      color: '#6b21a8' },
+			{ id: 'teal',      name: 'Teal',      color: '#0f766e' },
+			{ id: 'spruce',    name: 'Spruce',    color: '#155e75' },
+			{ id: 'sage',      name: 'Sage',      color: '#166534' },
+			{ id: 'crimson',   name: 'Crimson',   color: '#7f1d1d' },
+			{ id: 'burgundy',  name: 'Burgundy',  color: '#9f1239' },
+			{ id: 'copper',    name: 'Copper',    color: '#9a3412' },
+			{ id: 'gold',      name: 'Gold',      color: '#92400e' },
+			{ id: 'stone',     name: 'Stone',     color: '#44403c' },
+			{ id: 'slate',     name: 'Slate',     color: '#334155' },
+			{ id: 'graphite',  name: 'Graphite',  color: '#3f3f46' },
+		];
+
+		function applyTheme(id) {
+			if (id === 'default') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', id);
+			}
+		}
+
+		return {
+			open: false,
+			themes: themes,
+			current: (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || 'default',
+			currentTheme: function() {
+				var self = this;
+				return self.themes.find(function(t) { return t.id === self.current; }) || self.themes[0];
+			},
+			selectTheme: function(id) {
+				this.current = id;
+				this.open = false;
+				applyTheme(id);
+				if (typeof localStorage !== 'undefined') localStorage.setItem('theme', id);
+			},
+		};
+	}
+</script>

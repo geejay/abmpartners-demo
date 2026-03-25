@@ -7,12 +7,12 @@ interface FaqItem {
 }
 
 const colors: { [key: string]: string } = {
-	teal: "text-gray-500",
-	fuchsia: "text-gray-500",
+	teal: "theme-heading",
+	fuchsia: "theme-heading",
 };
 ---
 
-<dl class="not-prose mt-8 space-y-4 divide-y divide-gray-gray-200" x-data="{ open: 0 }">
+<dl class="not-prose mt-8 space-y-4 divide-y divide-gray-200" x-data="{ open: 0 }">
 	{
 		items.map((item: FaqItem, index: number) => (
 			<div class="pt-4">
