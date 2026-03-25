@@ -4,7 +4,7 @@ export const siteCurrency = "USD";
 export const siteDomain = "abmartners.com.au";
 export const siteName = "ABM Partners";
 export const siteSlogan = "Corporate event management, delivered with precision.";
-export const themeColor = "#FF0000";
+export const themeColor = "#1f2937";
 
 export const phone = {
 	href: "tel:+123456789",
