@@ -1,9 +1,11 @@
+import { env } from 'cloudflare:workers';
+
 export const prerender = false;
 
 export async function POST({ request, locals }: { request: Request; locals: App.Locals }) {
-	const env = (locals as any).runtime?.env ?? {};
+	// const env = (locals as any).runtime?.env ?? {};
 	const RESEND_API_KEY: string | undefined = env.RESEND_API_KEY;
-	const TO_EMAIL: string = env.CONTACT_TO_EMAIL ?? "info@abmpartners.com.au";
+	const TO_EMAIL: string = env.CONTACT_TO_EMAIL ?? "support@abmpartners.com.au";
 	const FROM_EMAIL: string = env.CONTACT_FROM_EMAIL ?? "noreply@abmpartners.com.au";
 
 	if (!RESEND_API_KEY) {
