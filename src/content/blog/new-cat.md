@@ -31,4 +31,4 @@ How an event ends is what people remember. Whether it's a compelling closing key
 
 ---
 
-If you'd like to discuss how ABM Partners can bring these principles to your next event, [get in touch](/contact).
+If you'd like to discuss how ABM Partners can bring these principles to your next event, [get in touch](/virtual-roundtables).

@@ -9,7 +9,7 @@ export const menuMain = [
 	},
 	{
 		name: "CSR",
-		url: "/cats",
+		url: "/csr",
 	},
 	{
 		name: "Previous Event Content",
@@ -17,6 +17,6 @@ export const menuMain = [
 	},
 	{
 		name: "Virtual Roundtables",
-		url: "/contact",
+		url: "/virtual-roundtables",
 	},
 ];

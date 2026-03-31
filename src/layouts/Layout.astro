@@ -13,8 +13,10 @@ import { siteName, siteLang, themeColor } from "~/data/config";
 	<head>
 		<script is:inline>
 			(function () {
-				var t = typeof localStorage !== 'undefined' && localStorage.getItem('theme');
-				if (t && t !== 'default') document.documentElement.setAttribute('data-theme', t);
+				document.documentElement.setAttribute('data-theme', 'royal');
+				document.addEventListener('astro:page-load', function () {
+					document.documentElement.setAttribute('data-theme', 'royal');
+				});
 			})();
 		</script>
 		<meta charset="utf-8" />

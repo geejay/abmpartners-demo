@@ -432,7 +432,7 @@ p {
 }
 
 .button {
-	@apply px-4 py-3 text-lg transition duration-300 font-bold shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2;
+	@apply px-4 py-3 text-lg transition duration-300 font-bold shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 flex items-center justify-center text-center;
 }
 
 .button-white {

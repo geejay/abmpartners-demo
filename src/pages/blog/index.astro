@@ -1,11 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
-import CardBlogPost from "~/components/CardBlogPost.astro";
-const posts = await getCollection("blog");
 ---
 
 <Layout>
@@ -18,10 +15,6 @@ const posts = await getCollection("blog");
 					delivered for our clients across Australia.
 				</p>
 			</Heading>
-
-			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 xl:gap-24">
-				{posts.map((post) => <CardBlogPost post={post} />)}
-			</div>
 		</Container>
 	</Section>
 </Layout>

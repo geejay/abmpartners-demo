@@ -78,7 +78,7 @@
 		return {
 			open: false,
 			themes: themes,
-			current: (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || 'default',
+			current: (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || 'royal',
 			currentTheme: function() {
 				var self = this;
 				return self.themes.find(function(t) { return t.id === self.current; }) || self.themes[0];
