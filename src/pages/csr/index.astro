@@ -1,0 +1,72 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import Article from "~/components/Article.astro";
+---
+
+<Layout>
+	<Section class:list={"theme-section-alt"}>
+		<Container>
+			<Heading>
+				<h1 slot="heading-title" class="h2 theme-heading">Corporate Social Responsibility</h1>
+				<p slot="heading-content">
+					Events that do good — for your people, your community, and the world around us.
+				</p>
+			</Heading>
+
+			<Article>
+				<h2 class="font-bold theme-heading h3">Our Commitment</h2>
+				<p>
+					At ABM Partners, we believe that how you run an event says as much about your organisation as
+					the event itself. Corporate social responsibility is not a checkbox for us — it is embedded
+					in the way we plan, source, and deliver every engagement. We help our clients use their events
+					as a platform to demonstrate genuine values and make a measurable positive impact.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Sustainable Event Practices</h2>
+				<p>
+					We work with venues, caterers, and suppliers who share our commitment to environmental
+					responsibility. From minimising single-use plastics and reducing food waste to selecting
+					venues with strong sustainability credentials, we actively look for ways to lower the
+					environmental footprint of every event we manage. For clients with specific sustainability
+					targets, we can provide detailed reporting on waste, emissions, and resource consumption.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Community and Social Impact</h2>
+				<p>
+					Many of our clients choose to incorporate a community element into their events — whether
+					that is a charity auction, a volunteering day attached to a conference, or donating surplus
+					catering to local organisations. We have strong relationships with community partners across
+					Australia and can help you identify and embed meaningful social impact activities that
+					resonate with your audience and align with your company's values.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Inclusive and Accessible Events</h2>
+				<p>
+					Great events welcome everyone. We design our programs with accessibility and inclusion at the
+					forefront — ensuring venues are physically accessible, materials are available in appropriate
+					formats, and the event experience is welcoming to attendees of all backgrounds and
+					abilities. We also actively support diverse speaker and facilitator representation across our
+					programs.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Responsible Supply Chain</h2>
+				<p>
+					We carefully vet the suppliers and partners we work with, giving preference to businesses
+					that demonstrate ethical labour practices, local sourcing, and a commitment to reducing their
+					environmental impact. When you work with ABM Partners, you can be confident that your event
+					spend is supporting a responsible supply chain.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Work With Us</h2>
+				<p>
+					If you want to make your next event not just memorable, but meaningful, we would love to
+					talk. <a href="/virtual-roundtables" class="theme-link">Get in touch</a> with our team to discuss
+					how we can build a CSR strategy into your event from the ground up.
+				</p>
+			</Article>
+		</Container>
+	</Section>
+</Layout>

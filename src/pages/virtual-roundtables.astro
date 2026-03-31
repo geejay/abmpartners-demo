@@ -1,0 +1,65 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import Article from "~/components/Article.astro";
+---
+
+<Layout>
+	<Section class:list={'theme-section-alt'}>
+		<Container>
+			<Heading>
+				<h1 slot="heading-title" class="h2 theme-heading">Virtual Roundtables</h1>
+				<p slot="heading-content">
+					Bringing together the brightest minds in your industry — without the need for a boardroom.
+				</p>
+			</Heading>
+
+			<Article>
+				<h2 class="font-bold theme-heading h3">Where Thought Leaders Shape the Conversation</h2>
+				<p>
+					In a world where geography is no longer a barrier, the most influential conversations in
+					business are happening online. ABM Partners' Virtual Roundtable program is designed for
+					senior executives, industry analysts, and corporate thought leaders who want to drive
+					meaningful dialogue, share expertise, and build relationships that matter — all from wherever
+					they are in the world.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Curated for Senior Voices</h2>
+				<p>
+					Our roundtables are deliberately small — typically 10 to 20 participants — to ensure every
+					voice is heard and every exchange carries weight. Each session is themed around a pressing
+					industry challenge or emerging opportunity, with participants selected for their depth of
+					experience and relevance to the topic. This is not a webinar. It is a working conversation
+					among peers.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">What We Deliver</h2>
+				<p>
+					ABM Partners manages every aspect of the virtual roundtable experience, from platform
+					selection and pre-event speaker briefings to live facilitation and post-event content
+					packaging. We handle the logistics so your participants can focus entirely on the
+					conversation. Following each session, we produce a polished summary report and curated
+					content assets that extend the reach and impact of the discussion long after the session ends.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Built Around Your Objectives</h2>
+				<p>
+					Whether your goal is to establish your brand as an industry authority, deepen relationships
+					with key clients and partners, generate high-quality content for your marketing pipeline, or
+					simply create a forum for candid strategic exchange — we design each roundtable with your
+					outcomes front of mind. No two sessions are the same.
+				</p>
+
+				<h2 class="font-bold theme-heading h3">Get Involved</h2>
+				<p>
+					If you are a corporate leader with a perspective worth sharing, or an organisation looking to
+					convene the right voices around a topic that matters to your industry, we would love to hear
+					from you. <a href="/virtual-roundtables#contact" class="theme-link">Reach out to our team</a> to
+					discuss how a Virtual Roundtable can work for you.
+				</p>
+			</Article>
+		</Container>
+	</Section>
+</Layout>
