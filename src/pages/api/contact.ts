@@ -5,10 +5,10 @@ export const prerender = false;
 export async function POST({ request, locals }: { request: Request; locals: App.Locals }) {
 	// const env = (locals as any).runtime?.env ?? {};
 	const RESEND_API_KEY: string | undefined = env.RESEND_API_KEY;
-	const TO_EMAIL: string = env.CONTACT_TO_EMAIL ?? "support@abmpartners.com.au";
-	const FROM_EMAIL: string = env.CONTACT_FROM_EMAIL ?? "noreply@abmpartners.com.au";
+	const TO_EMAILS: string[] = (env.CONTACT_TO_EMAILS ?? "").split(",").map((e: string) => e.trim()).filter(Boolean);
+	const FROM_EMAIL: string | undefined = env.CONTACT_FROM_EMAIL;
 
-	if (!RESEND_API_KEY) {
+	if (!RESEND_API_KEY || !TO_EMAILS.length || !FROM_EMAIL) {
 		return new Response(JSON.stringify({ error: "Email service not configured." }), {
 			status: 500,
 			headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ export async function POST({ request, locals }: { request: Request; locals: App.
 		},
 		body: JSON.stringify({
 			from: `ABM Partners <${FROM_EMAIL}>`,
-			to: [TO_EMAIL],
+			to: TO_EMAILS,
 			reply_to: email,
 			subject: `Contact form enquiry from ${name}`,
 			text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

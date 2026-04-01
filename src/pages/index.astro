@@ -45,19 +45,40 @@ const faq = [
                 loading={"eager"}
                 fetchpriority={"high"}
         />
-        <div class="theme-hero-overlay absolute inset-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/65 to-black/70"></div>
+        <div class="absolute inset-0 opacity-[0.07]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 72px 72px;"></div>
         <Container class:list={"relative z-10 h-full lg:min-h-svh lg:h-svh"}>
-            <div class="flex items-center h-full justify-center">
-                <div class="prose prose-xl prose-invert text-white lg:text-center text-balance">
-                    <h1 class="text-5xl lg:text-8xl mb-0">ABM Partners Events</h1>
-                    <p>
+            <div class="flex items-end h-full pb-20 lg:pb-28">
+                <div class="max-w-4xl">
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-violet-300/70 mb-8 border border-violet-400/25 px-3 py-1.5">
+                        Corporate Event Management
+                    </div>
+                    <h1 class="text-5xl lg:text-8xl font-black text-white leading-none tracking-tight mb-0">
+                        ABM Partners<br/>Events
+                    </h1>
+                    <p class="mt-8 text-lg lg:text-xl text-violet-100/60 leading-relaxed max-w-2xl">
                         From high-stakes board retreats to industry-defining conferences, we transform your objectives
-                        into unforgettable experiences. Our team specializes in precision planning and strategic
-                        execution, ensuring your corporate events are as seamless as they are impactful.
+                        into unforgettable experiences — with precision planning and flawless execution.
                     </p>
 
-                    <div class="not-prose mt-8">
-                        <Button url="/csr" color="white"> Our packages</Button>
+                    <div class="mt-10 flex flex-wrap items-center gap-4">
+                        <Button url="/csr" color="white">Our packages</Button>
+                        <a href="/#contact" class="text-sm font-medium text-violet-300/70 hover:text-violet-200 transition tracking-wide">Get in touch &rarr;</a>
+                    </div>
+
+                    <div class="mt-16 pt-8 border-t border-violet-400/15 grid grid-cols-3 gap-8 max-w-lg">
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-black text-violet-200">200+</div>
+                            <div class="text-xs text-violet-300/45 uppercase tracking-widest mt-1">Events delivered</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-black text-violet-200">50+</div>
+                            <div class="text-xs text-violet-300/45 uppercase tracking-widest mt-1">Cities worldwide</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl lg:text-3xl font-black text-violet-200">98%</div>
+                            <div class="text-xs text-violet-300/45 uppercase tracking-widest mt-1">Client satisfaction</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,7 +169,7 @@ const faq = [
         </Container>
     </Section>
 
-    <Section>
+    <Section id="contact">
         <Container>
             <div class="max-w-2xl mx-auto">
                 <Heading>
