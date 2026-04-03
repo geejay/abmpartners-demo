@@ -9,6 +9,11 @@ export async function POST({ request, locals }: { request: Request; locals: App.
 	const FROM_EMAIL: string | undefined = env.CONTACT_FROM_EMAIL;
 
 	if (!RESEND_API_KEY || !TO_EMAILS.length || !FROM_EMAIL) {
+		console.error("Email service not configured. Missing:", [
+			!RESEND_API_KEY && "RESEND_API_KEY",
+			!TO_EMAILS.length && "CONTACT_TO_EMAILS",
+			!FROM_EMAIL && "CONTACT_FROM_EMAIL",
+		].filter(Boolean).join(", "));
 		return new Response(JSON.stringify({ error: "Email service not configured." }), {
 			status: 500,
 			headers: { "Content-Type": "application/json" },
