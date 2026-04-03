@@ -158,11 +158,28 @@ const faq = [
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px theme-grid-divider border">
                 {[
-                    "Deloitte", "Westpac", "Telstra", "Macquarie", "Aurecon", "KPMG",
-                    "ANZ", "Lendlease", "Optus", "PwC", "Transurban", "Mirvac",
-                ].map((name) => (
+                    { name: "Deloitte",    domain: "deloitte.com" },
+                    { name: "Westpac",     domain: "westpac.com.au" },
+                    { name: "Telstra",     domain: "telstra.com.au" },
+                    { name: "Macquarie",   domain: "macquarie.com" },
+                    { name: "Aurecon",     domain: "aurecongroup.com" },
+                    { name: "KPMG",        domain: "kpmg.com" },
+                    { name: "ANZ",         domain: "anz.com.au" },
+                    { name: "Lendlease",   domain: "lendlease.com" },
+                    { name: "Optus",       domain: "optus.com.au" },
+                    { name: "PwC",         domain: "pwc.com.au" },
+                    { name: "Transurban",  domain: "transurban.com" },
+                    { name: "Mirvac",      domain: "mirvac.com" },
+                ].map(({ name, domain }) => (
                     <div class="bg-white flex items-center justify-center px-6 py-10">
-                        <span class="text-gray-400 font-bold text-sm tracking-widest uppercase">{name}</span>
+                        <img
+                            src={`https://img.logo.dev/${domain}?token=pk_TlUkylwwTFO3WKRF8RHeJA`}
+                            alt={name}
+                            title={name}
+                            class="h-16 w-auto max-w-full object-contain grayscale opacity-60"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+                        />
+                        <span class="text-gray-400 font-bold text-sm tracking-widest uppercase hidden">{name}</span>
                     </div>
                 ))}
             </div>
@@ -173,8 +190,8 @@ const faq = [
         <Container>
             <div class="max-w-2xl mx-auto">
                 <Heading>
-                    <h2 slot="heading-title" class="h2">Contact</h2>
-                    <p slot="heading-content">Get in touch with us for any questions or inquiries.</p>
+                    <h2 slot="heading-title" class="h2 theme-heading">Contact</h2>
+                    <p slot="heading-content" class="theme-heading">Get in touch with us for any questions or inquiries.</p>
                 </Heading>
 
                 <FormContact />

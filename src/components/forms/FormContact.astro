@@ -24,23 +24,23 @@
 >
     <div class="flex flex-col gap-8">
         <div>
-            <label for="name">Name</label>
+            <label for="name" class="theme-heading">Name</label>
             <div class="mt-2">
-                <input type="text" name="name" id="name" required />
+                <input type="text" name="name" id="name" required class="contact-input" />
             </div>
         </div>
 
         <div>
-            <label for="email">Email</label>
+            <label for="email" class="theme-heading">Email</label>
             <div class="mt-2 grid grid-cols-1">
-                <input type="email" name="email" id="email" placeholder="you@example.com" required />
+                <input type="email" name="email" id="email" placeholder="you@example.com" required class="contact-input" />
             </div>
         </div>
 
         <div>
-            <label for="message">Message</label>
+            <label for="message" class="theme-heading">Message</label>
             <div class="mt-2">
-                <textarea name="message" id="message" rows="4" required></textarea>
+                <textarea name="message" id="message" rows="4" required class="contact-input"></textarea>
             </div>
         </div>
 
@@ -72,3 +72,13 @@
         </div>
     </div>
 </form>
+
+<style>
+    .contact-input {
+        border-color: var(--theme-grid-divider);
+    }
+    .contact-input:focus {
+        --tw-ring-color: var(--theme-badge-ring);
+        border-color: var(--theme-badge-ring);
+    }
+</style>
