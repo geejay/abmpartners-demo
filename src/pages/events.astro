@@ -1,0 +1,195 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import ShowCats from "~/components/ShowCats.astro";
+import Button from "~/components/Button.astro";
+import { Image } from "astro:assets";
+
+import Background from "~/assets/images/background.png";
+import Breakfast from "~/assets/images/breakfast.webp";
+import Breakfast2 from "~/assets/images/breakfast-2.jpeg";
+import Lunch1 from "~/assets/images/lunch-1.jpg";
+import Lunch2 from "~/assets/images/lunch-2.jpg";
+import Bespoke from "~/assets/images/bespoke-1.jpg";
+
+const pastEvents = [
+    {
+        title: "Technology Leaders Lunch",
+        location: "Sydney, NSW",
+        date: "March 2026",
+        description: "An intimate roundtable for CIOs and CTOs from Australia's top 50 companies, exploring AI governance and digital transformation priorities for the year ahead.",
+        image: Lunch1,
+        status: "past",
+    },
+    {
+        title: "C-Suite Strategy Breakfast",
+        location: "Melbourne, VIC",
+        date: "February 2026",
+        description: "A curated morning briefing bringing together CEOs and senior leaders to discuss board-level technology investment and risk appetite in an evolving landscape.",
+        image: Breakfast,
+        status: "past",
+    },
+    {
+        title: "Cyber Security Executive Dinner",
+        location: "Brisbane, QLD",
+        date: "January 2026",
+        description: "A private gala dinner convening CISOs and security leaders to share intelligence on emerging threats, regulatory change, and cross-sector collaboration.",
+        image: Lunch2,
+        status: "past",
+    },
+];
+
+const upcomingEvents = [
+    {
+        title: "Digital Transformation Executive Lunch",
+        location: "Sydney, NSW",
+        date: "May 2026",
+        description: "Invite-only lunch briefing for senior technology executives navigating large-scale transformation programs. Limited to 30 attendees.",
+        image: Bespoke,
+        status: "upcoming",
+    },
+    {
+        title: "CFO Innovation Breakfast",
+        location: "Melbourne, VIC",
+        date: "June 2026",
+        description: "A structured breakfast session for CFOs and finance leaders focused on emerging fintech, AI-driven forecasting, and modernising the finance function.",
+        image: Breakfast2,
+        status: "upcoming",
+    },
+    {
+        title: "Infrastructure & Cloud Summit Dinner",
+        location: "Sydney, NSW",
+        date: "July 2026",
+        description: "An exclusive evening session for infrastructure and cloud leaders to explore sovereign cloud policy, hybrid architectures, and vendor strategy.",
+        image: Lunch2,
+        status: "upcoming",
+    },
+];
+---
+
+<Layout title="Events" pageTitle="Events" description="Past and upcoming events by ABM Partners — invite-only sessions for technology's inner circle.">
+
+    <!-- Section 1: Past & Upcoming Events -->
+    <Section class:list={"theme-section-alt"}>
+        <Container>
+            <Heading>
+                <h1 slot="heading-title" class="h2 theme-heading">Past &amp; Upcoming Events</h1>
+                <p slot="heading-content">
+                    Invite-only briefings and roundtables designed for senior leaders. Each event is carefully curated to foster genuine connection and strategic dialogue.
+                </p>
+            </Heading>
+
+            <h3 class="text-xs font-semibold tracking-widest uppercase theme-heading mb-8">Upcoming</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                {upcomingEvents.map((event) => (
+                    <article class="theme-card-dark flex flex-col">
+                        <div class="relative">
+                            <Image
+                                src={event.image}
+                                alt={event.title}
+                                class="w-full aspect-[6/4] object-cover opacity-40"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/80"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="inline-flex items-center px-2.5 py-1 text-xs font-semibold tracking-widest uppercase bg-white/15 text-white border border-white/20">
+                                    Upcoming
+                                </span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-6 flex flex-col grow border-x border-b theme-card-border">
+                            <div class="text-xs text-gray-400 tracking-widest uppercase mb-2">{event.date} &mdash; {event.location}</div>
+                            <h2 class="h5 tracking-wide text-white mb-3">{event.title}</h2>
+                            <p class="text-gray-400 text-sm leading-relaxed grow">{event.description}</p>
+                            <div class="mt-6">
+                                <a href="/#contact" class="text-sm font-semibold tracking-wide theme-heading hover:opacity-70 transition">
+                                    Request an invitation &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            <h3 class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-8">Past Events</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {pastEvents.map((event) => (
+                    <article class="flex flex-col border theme-card-border">
+                        <div class="relative">
+                            <Image
+                                src={event.image}
+                                alt={event.title}
+                                class="w-full aspect-[6/4] object-cover grayscale opacity-30"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/10 to-gray-900/60"></div>
+                            <div class="absolute top-4 left-4">
+                                <span class="inline-flex items-center px-2.5 py-1 text-xs font-semibold tracking-widest uppercase bg-black/30 text-gray-300 border border-white/10">
+                                    Past
+                                </span>
+                            </div>
+                        </div>
+                        <div class="px-6 py-6 flex flex-col grow bg-white">
+                            <div class="text-xs text-gray-400 tracking-widest uppercase mb-2">{event.date} &mdash; {event.location}</div>
+                            <h2 class="text-lg font-bold theme-heading mb-3">{event.title}</h2>
+                            <p class="text-gray-500 text-sm leading-relaxed">{event.description}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </Container>
+    </Section>
+
+    <!-- Section 2: Packages — featured + full list -->
+    <Section>
+        <Container>
+
+            <!-- Featured: Bespoke Lunch Briefing -->
+            <div class="theme-card-dark border theme-card-border mb-20 grid grid-cols-1 lg:grid-cols-2">
+                <div class="relative">
+                    <Image
+                        src={Lunch1}
+                        alt="Bespoke Lunch Briefing"
+                        class="w-full h-full object-cover opacity-50 min-h-64"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900/60"></div>
+                </div>
+                <div class="px-10 py-12 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase theme-heading mb-4 border theme-card-border px-3 py-1.5 self-start">
+                        Our Most Popular Event
+                    </div>
+                    <h2 class="h3 text-white mb-4">Bespoke Lunch Briefing</h2>
+                    <p class="text-gray-300 leading-relaxed mb-8">
+                        A hand-curated midday briefing built entirely around your objectives. Intimate, agenda-driven, and designed for c-suite decision makers. Our most requested format — combining a premium dining experience with structured, high-value conversation.
+                    </p>
+                    <div>
+                        <Button url="/#contact" color="teal">Secure your seat at the table</Button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Packages -->
+            <Heading>
+                <h2 slot="heading-title" class="h2 theme-heading">Available Packages</h2>
+                <p slot="heading-content">
+                    From focused breakfast briefings to multi-day executive retreats — every format is designed to drive meaningful outcomes.
+                </p>
+            </Heading>
+
+            <ShowCats cats={["breakfast", "lunch", "dinner", "half-day", "one-day", "bespoke"]} />
+        </Container>
+    </Section>
+
+    <!-- CTA Banner -->
+    <Section class:list={"relative"}>
+        <Image src={Background} alt="" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="theme-cta-overlay absolute inset-0"></div>
+        <Container class:list={"relative z-10"}>
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:justify-evenly max-w-4xl w-full mx-auto">
+                <h2 class="text-white text-center">Ready to secure your seat at the table?</h2>
+                <Button url="/#contact" color="white">Get in touch</Button>
+            </div>
+        </Container>
+    </Section>
+
+</Layout>

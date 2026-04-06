@@ -12,12 +12,13 @@ const rmTrailingSlash = (path: string): string => {
 const pathname = rmTrailingSlash(Astro.url.pathname);
 ---
 
-<header x-data="{ open: false }" @keydown.window.escape="open = false">
+<header x-data="{ open: false, scrolled: false }" @keydown.window.escape="open = false" x-init="scrolled = window.scrollY > 80; window.addEventListener('scroll', () => { scrolled = window.scrollY > 80 })">
 	<div>
 		<div id="header-wrapper" class="fixed top-0 z-40 inset-x-0 w-full">
 			<div>
-				<div class="max-lg:px-4 bg-violet-950/20 backdrop-blur-xl border-b border-violet-400/10 py-4 px-6">
-					<nav class="grid grid-cols-[auto_1fr_auto] items-center gap-4 text-white" aria-label="Global">
+				<div class="max-lg:px-4 backdrop-blur-xl py-4 px-6 transition-colors duration-300"
+					:class="scrolled ? 'bg-gray-800/60 border-b border-gray-700/50' : 'bg-violet-950/20 border-b border-violet-400/10'">
+					<nav class="grid grid-cols-[auto_1fr_auto] items-center gap-4" aria-label="Global">
 						<a href="/">
 							<LogoContainer />
 						</a>
@@ -26,7 +27,8 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 								menuMain.map((item) => (
 									<a
 										href={item.url}
-										class={`transition text-sm font-medium text-violet-200/60 hover:text-violet-100 tracking-wide whitespace-nowrap ${pathname === item.url ? "!text-violet-200" : ""}`}
+										class={`transition text-sm font-medium tracking-wide whitespace-nowrap ${pathname === item.url ? "font-bold" : ""}`}
+										:class="scrolled ? 'text-gray-300 hover:text-white' : 'text-violet-200/60 hover:text-violet-100'"
 									>
 										{item.name}
 									</a>
@@ -34,8 +36,10 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 							}
 						</div>
 						<div class="flex items-center justify-end gap-x-4">
-							<a href="tel:0400123123" class="max-xl:hidden text-sm font-medium text-violet-200/50 hover:text-violet-100 transition whitespace-nowrap">0400 123 123</a>
-							<a href="/#contact" class="max-xl:hidden text-sm font-semibold px-4 py-2 border border-violet-400/35 text-violet-200 hover:bg-violet-500/20 hover:border-violet-400/60 transition whitespace-nowrap">
+							<a href="tel:0400123123" class="max-xl:hidden text-sm font-medium transition whitespace-nowrap"
+								:class="scrolled ? 'text-gray-400 hover:text-white' : 'text-violet-200/50 hover:text-violet-100'">0400 123 123</a>
+							<a href="/#contact" class="max-xl:hidden text-sm font-semibold px-4 py-2 border transition whitespace-nowrap"
+								:class="scrolled ? 'border-gray-500 text-gray-200 hover:bg-gray-700' : 'border-violet-400/35 text-violet-200 hover:bg-violet-500/20 hover:border-violet-400/60'">
 								Get in touch
 							</a>
 							<div class="flex lg:hidden">
@@ -46,7 +50,8 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 								>
 									<span class="sr-only">Open main menu</span>
 									<svg
-										class="size-6 text-violet-300/60"
+										class="size-6 transition-colors duration-300"
+										:class="scrolled ? 'text-gray-300' : 'text-violet-300/60'"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke-width="1.5"
