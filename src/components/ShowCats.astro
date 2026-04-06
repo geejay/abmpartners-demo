@@ -1,8 +1,9 @@
 ---
-import { getEntries } from "astro:content";
+import { getCollection } from "astro:content";
 import CardCat from "./CardCat.astro";
 const { cats = [] } = Astro.props;
-const catEntries = await getEntries(cats.map((id: string) => ({ collection: "cats", id: id })));
+const allCats = await getCollection("cats");
+const catEntries = cats.map((id: string) => allCats.find((c) => c.id === id)).filter(Boolean);
 ---
 
 <div>

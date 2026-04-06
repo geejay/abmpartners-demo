@@ -1,22 +1,14 @@
 export const menuMain = [
 	{
-		name: "Past Events",
+		name: "Home",
 		url: "/",
 	},
 	{
-		name: "Testimonials",
-		url: "/about-us",
+		name: "Events",
+		url: "/events",
 	},
 	{
-		name: "CSR",
-		url: "/csr",
-	},
-	{
-		name: "Previous Event Content",
-		url: "/blog",
-	},
-	{
-		name: "Virtual Roundtables",
-		url: "/virtual-roundtables",
+		name: "Contact",
+		url: "/#contact",
 	},
 ];

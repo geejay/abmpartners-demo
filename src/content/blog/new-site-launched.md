@@ -1,7 +1,7 @@
 ---
 title: Our New Website Is Live
 slug: new-site-launched
-image: src/assets/images/pexels-thirdman-8942612.webp
+image: src/assets/images/lunch-2.jpg
 imageAlt: Corporate event planning
 excerpt: Announcing the launch of the new ABM Partners website.
 publishDate: 2024-01-21
