@@ -12,7 +12,14 @@ const rmTrailingSlash = (path: string): string => {
 const pathname = rmTrailingSlash(Astro.url.pathname);
 ---
 
-<header x-data="{ open: false, scrolled: false }" @keydown.window.escape="open = false" x-init="scrolled = window.scrollY > 80; window.addEventListener('scroll', () => { scrolled = window.scrollY > 80 })">
+<header x-data="{ open: false, scrolled: false }" @keydown.window.escape="open = false" x-init="
+    const hero = document.querySelector('[data-dark-hero]');
+    if (!hero) { scrolled = true; }
+    else {
+        const obs = new IntersectionObserver(([e]) => { scrolled = !e.isIntersecting }, { threshold: 0.1 });
+        obs.observe(hero);
+    }
+">
 	<div>
 		<div id="header-wrapper" class="fixed top-0 z-40 inset-x-0 w-full">
 			<div>
