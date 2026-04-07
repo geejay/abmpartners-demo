@@ -4,8 +4,8 @@ import LogoContainer from "~/components//LogoContainer.astro";
 import SocialMediaIcons from "./SocialMediaIcons.astro";
 
 const rmTrailingSlash = (path: string): string => {
-  return path.endsWith("/") && path.length > 1 
-    ? path.slice(0, path.length - 1) 
+  return path.endsWith("/") && path.length > 1
+    ? path.slice(0, path.length - 1)
     : path;
 }
 
@@ -24,8 +24,8 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 		<div id="header-wrapper" class="fixed top-0 z-40 inset-x-0 w-full">
 			<div>
 				<div class="max-lg:px-4 backdrop-blur-xl py-4 px-6 transition-colors duration-300"
-					:class="scrolled ? 'bg-gray-800/60 border-b border-gray-700/50' : 'bg-violet-950/20 border-b border-violet-400/10'">
-					<nav class="grid grid-cols-[auto_1fr_auto] items-center gap-4" aria-label="Global">
+					:class="scrolled ? 'bg-gray-800/15 border-b border-gray-700/10' : 'bg-transparent border-b border-white/5'">
+					<nav class="grid grid-cols-[auto_1fr_auto] items-center gap-4 text-white" aria-label="Global">
 						<a href="/">
 							<LogoContainer />
 						</a>
