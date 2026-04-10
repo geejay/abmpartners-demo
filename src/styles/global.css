@@ -386,11 +386,11 @@ body {
 
 body {
 	@apply h-full scroll-smooth text-gray-700;
-	font-family: 'DM Sans', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Space Grotesk', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h1,
