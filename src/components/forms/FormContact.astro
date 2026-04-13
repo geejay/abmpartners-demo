@@ -23,17 +23,51 @@
     @submit="submit"
 >
     <div class="flex flex-col gap-8">
-        <div>
-            <label for="name" class="theme-heading">Name</label>
-            <div class="mt-2">
-                <input type="text" name="name" id="name" required class="contact-input" />
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div>
+                <label for="first_name" class="theme-heading">First Name</label>
+                <div class="mt-2">
+                    <input type="text" name="first_name" id="first_name" required class="contact-input" />
+                </div>
+            </div>
+
+            <div>
+                <label for="last_name" class="theme-heading">Last Name</label>
+                <div class="mt-2">
+                    <input type="text" name="last_name" id="last_name" required class="contact-input" />
+                </div>
             </div>
         </div>
 
-        <div>
-            <label for="email" class="theme-heading">Email</label>
-            <div class="mt-2 grid grid-cols-1">
-                <input type="email" name="email" id="email" placeholder="you@example.com" required class="contact-input" />
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div>
+                <label for="company" class="theme-heading">Company</label>
+                <div class="mt-2">
+                    <input type="text" name="company" id="company" required class="contact-input" />
+                </div>
+            </div>
+
+            <div>
+                <label for="job_title" class="theme-heading">Job Title</label>
+                <div class="mt-2">
+                    <input type="text" name="job_title" id="job_title" required class="contact-input" />
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div>
+                <label for="email" class="theme-heading">Email Address</label>
+                <div class="mt-2">
+                    <input type="email" name="email" id="email" placeholder="you@example.com" required class="contact-input" />
+                </div>
+            </div>
+
+            <div>
+                <label for="phone" class="theme-heading">Phone Number</label>
+                <div class="mt-2">
+                    <input type="tel" name="phone" id="phone" class="contact-input" />
+                </div>
             </div>
         </div>
 

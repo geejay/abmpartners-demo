@@ -30,12 +30,17 @@ export async function POST({ request, locals }: { request: Request; locals: App.
 		});
 	}
 
-	const name = (data.get("name") ?? "").toString().trim();
+	const firstName = (data.get("first_name") ?? "").toString().trim();
+	const lastName = (data.get("last_name") ?? "").toString().trim();
+	const company = (data.get("company") ?? "").toString().trim();
+	const jobTitle = (data.get("job_title") ?? "").toString().trim();
 	const email = (data.get("email") ?? "").toString().trim();
+	const phone = (data.get("phone") ?? "").toString().trim();
 	const message = (data.get("message") ?? "").toString().trim();
+	const name = `${firstName} ${lastName}`.trim();
 
-	if (!name || !email || !message) {
-		return new Response(JSON.stringify({ error: "All fields are required." }), {
+	if (!firstName || !lastName || !company || !jobTitle || !email || !message) {
+		return new Response(JSON.stringify({ error: "All required fields must be filled." }), {
 			status: 400,
 			headers: { "Content-Type": "application/json" },
 		});
@@ -60,8 +65,8 @@ export async function POST({ request, locals }: { request: Request; locals: App.
 			to: TO_EMAILS,
 			reply_to: email,
 			subject: `Contact form enquiry from ${name}`,
-			text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-			html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p><hr/><p>${message.replace(/\n/g, "<br/>")}</p>`,
+			text: `Name: ${name}\nCompany: ${company}\nJob Title: ${jobTitle}\nEmail: ${email}\nPhone: ${phone || "N/A"}\n\nMessage:\n${message}`,
+			html: `<p><strong>Name:</strong> ${name}</p><p><strong>Company:</strong> ${company}</p><p><strong>Job Title:</strong> ${jobTitle}</p><p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p><p><strong>Phone:</strong> ${phone || "N/A"}</p><hr/><p>${message.replace(/\n/g, "<br/>")}</p>`,
 		}),
 	});
 
