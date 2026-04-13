@@ -1,0 +1,112 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import Button from "~/components/Button.astro";
+import FormContact from "~/components/forms/FormContact.astro";
+import { Image } from "astro:assets";
+import Background from "~/assets/images/background.png";
+import Breakfast from "~/assets/images/breakfast.webp";
+import Breakfast2 from "~/assets/images/breakfast-2.jpeg";
+import Lunch1 from "~/assets/images/lunch-1.jpg";
+import Lunch2 from "~/assets/images/lunch-2.jpg";
+import Bespoke from "~/assets/images/bespoke-1.jpg";
+
+const reasons = [
+    {
+        title: "Trusted Advisor Status",
+        description: "Position your organisation as the go-to authority in your category by being seen alongside Australia's most senior decision-makers in a curated, non-sales environment.",
+        image: Lunch1,
+    },
+    {
+        title: "Elevate Conversations to the C-Suite",
+        description: "Move beyond mid-level engagements. Our events are designed exclusively for C-suite executives, giving your team direct access to board-level conversations that rarely happen in any other setting.",
+        image: Breakfast,
+    },
+    {
+        title: "Accelerate Deal Cycles",
+        description: "Relationships built in intimate, high-trust environments progress faster. Partners consistently report shorter sales cycles and stronger executive sponsorship as a direct result of their involvement.",
+        image: Lunch2,
+    },
+    {
+        title: "Close Whitespace",
+        description: "Identify and engage net-new accounts you haven't been able to reach through traditional channels. Our curated attendee lists are built to surface the right organisations at the right time.",
+        image: Breakfast2,
+    },
+    {
+        title: "Brand Awareness & Positioning",
+        description: "Associate your brand with exclusivity, intelligence, and executive relevance. Sustained presence across our event series builds lasting recognition among the leaders who matter most.",
+        image: Bespoke,
+    },
+    {
+        title: "Market Pulse",
+        description: "Gain unfiltered insight into the priorities, pain points, and investment intentions of senior leaders across your target sectors — intelligence you simply can't buy from a research report.",
+        image: Lunch1,
+    },
+];
+---
+
+<Layout title="Partners" pageTitle="Partners" description="Why organisations partner with ABM Partners beyond pipeline generation.">
+
+    <Section class:list={"theme-section-alt"}>
+        <Container>
+            <Heading>
+                <h1 slot="heading-title" class="h2 theme-heading">Why do organisations partner with us outside of pipe-gen?</h1>
+                <p slot="heading-content">
+                    Our partners gain far more than pipeline. Here are six reasons senior organisations choose to work with us.
+                </p>
+            </Heading>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 xl:gap-24">
+                {reasons.map((reason, i) => (
+                    <article class="theme-card-dark">
+                        <div class="h-full flex flex-col">
+                            <div class="relative">
+                                <Image
+                                    src={reason.image}
+                                    alt={reason.title}
+                                    class="w-full aspect-[6/4] object-cover opacity-40"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/80"></div>
+                            </div>
+                            <div class="px-6 py-6 flex flex-col grow border-x border-b theme-card-border overflow-hidden">
+                                <div class="text-xs font-semibold tracking-widest uppercase theme-heading mb-3 opacity-60">
+                                    {String(i + 1).padStart(2, "0")}
+                                </div>
+                                <h2 class="h5 tracking-widest uppercase text-white mb-3">{reason.title}</h2>
+                                <p class="text-gray-400 text-sm leading-relaxed">{reason.description}</p>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </Container>
+    </Section>
+
+    <Section class:list={"relative"}>
+        <Image src={Background} alt="" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="theme-cta-overlay absolute inset-0"></div>
+        <Container class:list={"relative z-10"}>
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:justify-evenly max-w-4xl w-full mx-auto">
+                <h2 class="text-white text-center">Ready to become a partner?</h2>
+                <a href="#contact" class="shrink-0 inline-flex items-center gap-3 bg-white text-gray-900 font-bold tracking-widest uppercase text-sm px-12 py-5 shadow-lg hover:bg-gray-100 active:scale-95 transition duration-200">
+                    Get in touch &rarr;
+                </a>
+            </div>
+        </Container>
+    </Section>
+
+    <Section id="contact">
+        <Container>
+            <div class="max-w-2xl mx-auto">
+                <Heading>
+                    <h2 slot="heading-title" class="h2 theme-heading">Contact</h2>
+                    <p slot="heading-content" class="theme-heading">Get in touch with us for any questions or inquiries.</p>
+                </Heading>
+                <FormContact />
+            </div>
+        </Container>
+    </Section>
+
+</Layout>

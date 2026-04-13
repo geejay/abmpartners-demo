@@ -25,11 +25,6 @@ export const address = {
 };
 
 export const socialMedia = {
-	x: {
-		url: "https://x.com",
-		label: "X",
-		icon: "x",
-	},
 	linkedin: {
 		url: "https://linkedin.com",
 		label: "LinkedIn",

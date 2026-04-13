@@ -8,6 +8,10 @@ export const menuMain = [
 		url: "/events",
 	},
 	{
+		name: "Partners",
+		url: "/partners",
+	},
+	{
 		name: "Contact",
 		url: "/#contact",
 	},

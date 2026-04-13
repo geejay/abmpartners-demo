@@ -75,7 +75,7 @@ const upcomingEvents = [
     <Section class:list={"theme-section-alt"}>
         <Container>
             <Heading>
-                <h1 slot="heading-title" class="h2 theme-heading">Past &amp; Upcoming Events</h1>
+                <h1 slot="heading-title" class="h2 theme-heading">Events</h1>
                 <p slot="heading-content">
                     Invite-only briefings and roundtables designed for senior leaders. Each event is carefully curated to foster genuine connection and strategic dialogue.
                 </p>
@@ -131,8 +131,8 @@ const upcomingEvents = [
                         </div>
                         <div class="px-6 py-6 flex flex-col grow bg-white">
                             <div class="text-xs text-gray-400 tracking-widest uppercase mb-2">{event.date} &mdash; {event.location}</div>
-                            <h2 class="text-lg font-bold theme-heading mb-3">{event.title}</h2>
-                            <p class="text-gray-500 text-sm leading-relaxed">{event.description}</p>
+                            <h2 class="h5 tracking-wide theme-heading mb-3">{event.title}</h2>
+                            <p class="text-gray-500 text-sm leading-relaxed grow">{event.description}</p>
                         </div>
                     </article>
                 ))}
@@ -187,7 +187,9 @@ const upcomingEvents = [
         <Container class:list={"relative z-10"}>
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:justify-evenly max-w-4xl w-full mx-auto">
                 <h2 class="text-white text-center">Ready to secure your seat at the table?</h2>
-                <Button url="/#contact" color="white">Get in touch</Button>
+                <a href="/#contact" class="shrink-0 inline-flex items-center gap-3 bg-white text-gray-900 font-bold tracking-widest uppercase text-sm px-12 py-5 shadow-lg hover:bg-gray-100 active:scale-95 transition duration-200">
+                    Get in touch &rarr;
+                </a>
             </div>
         </Container>
     </Section>
