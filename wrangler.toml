@@ -12,3 +12,7 @@ binding = "abmpartners_events"
 database_name = "abmpartners-events"
 database_id = "075f8510-5613-40a6-818f-7e03b7fdc534"
 migrations_dir = "migrations"
+
+[assets]
+directory = "./dist" # Where Astro outputs static files
+binding = "ASSETS"   # Required for the Worker to access these assets
