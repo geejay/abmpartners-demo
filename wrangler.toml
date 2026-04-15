@@ -15,4 +15,4 @@ migrations_dir = "migrations"
 
 [assets]
 directory = "./dist" # Where Astro outputs static files
-binding = "ASSETS"   # Required for the Worker to access these assets
+binding = "WEB_ASSETS"   # Required for the Worker to access these assets
