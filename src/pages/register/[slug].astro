@@ -13,6 +13,7 @@ const DB = (env as any).DB as D1Database | undefined;
 let event: { name: string; description: string | null; date: string | null; location: string | null } | null = null;
 
 if (DB) {
+    console.log('DB found');
     const row = await DB.prepare(
         "SELECT name, description, date, location FROM events WHERE slug = ? AND active = 1 LIMIT 1"
     ).bind(slug).first<{ name: string; description: string | null; date: string | null; location: string | null }>();
@@ -20,6 +21,7 @@ if (DB) {
 }
 
 if (!event) {
+    console.log('no event found, 404');
     return new Response(null, { status: 404 });
 }
 ---
