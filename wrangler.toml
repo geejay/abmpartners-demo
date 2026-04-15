@@ -7,7 +7,7 @@ compatibility_date = "2026-04-11"
 #   CONTACT_FROM_EMAIL - sender address (must be verified in Resend, default: noreply@abmpartners.com.au)
 
 [[d1_databases]]
-binding = "abmpartners_events"
+binding = "db"
 database_name = "abmpartners-events"
 database_id = "075f8510-5613-40a6-818f-7e03b7fdc534"
 migrations_dir = "migrations"

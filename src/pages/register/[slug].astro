@@ -8,7 +8,7 @@ import Container from "~/components/Container.astro";
 
 const {slug} = Astro.params;
 
-const DB = (env as any).DB as D1Database | undefined;
+const DB = (env as any).db as D1Database | undefined;
 
 let event: { name: string; description: string | null; date: string | null; location: string | null } | null = null;
 
