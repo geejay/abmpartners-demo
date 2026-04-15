@@ -5,6 +5,8 @@ import {env} from 'cloudflare:workers';
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
+import {Picture} from "astro:assets";
+import Background from "~/assets/images/background.png";
 
 const {slug} = Astro.params;
 
@@ -31,19 +33,97 @@ if (!event) {
 <Layout
         title={`Register — ${event.name}`}
         pageTitle={`Register — ${event.name}`}
-        description={event.description ?? `Register your details for ${event.name}.`}
+        description={event.description ?? `You have been personally selected to attend ${event.name}. Secure your seat.`}
 >
+    <!-- Hero -->
+    <Section class:list={"relative"} data-dark-hero>
+        <Picture
+                src={Background}
+                alt=""
+                class:list={"absolute inset-0 w-full h-full object-cover"}
+                loading="eager"
+                fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-black/75"></div>
+        <div class="absolute inset-0 opacity-[0.06]"
+             style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 72px 72px;"></div>
+        <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent"></div>
+
+        <Container class:list={"relative z-10"} contain={false}>
+            <div class="container flex flex-col justify-center min-h-[60vh] py-24 lg:py-32 max-w-4xl">
+
+                <!-- Invitation badge -->
+                <div class="mb-8">
+                    <span class="inline-flex items-center gap-2 border border-amber-400/40 bg-amber-400/10 text-amber-300 text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3.5 shrink-0">
+                            <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/>
+                        </svg>
+                        By Invitation Only
+                    </span>
+                </div>
+
+                <h1 class="text-4xl lg:text-7xl font-black text-white leading-none tracking-tight mb-6">
+                    {event.name}
+                </h1>
+
+                {event.description && (
+                        <p class="text-lg lg:text-xl text-white/75 leading-relaxed max-w-2xl mb-6">
+                            {event.description}
+                        </p>
+                )}
+
+                <p class="text-base lg:text-lg text-white/55 leading-relaxed max-w-2xl mb-8">
+                    You have been personally selected to join an intimate gathering of senior executives and industry
+                    thought leaders. Expect candid conversation, strategic insight, and connections that last well
+                    beyond the boardroom.
+                </p>
+
+                <!-- Event meta -->
+                {(event.date || event.location) && (
+                        <div class="flex flex-wrap gap-6 text-sm text-white/45 mb-12">
+                            {event.date && (
+                                    <span class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor" class="size-4 text-amber-400/70">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+                                        </svg>
+                                        {event.date}
+                                    </span>
+                            )}
+                            {event.location && (
+                                    <span class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor" class="size-4 text-amber-400/70">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M19.5 10.5c0 7.142-7.5 11.25-9.5 11.25S.5 17.642.5 10.5a9.5 9.5 0 1 1 19 0Z"/>
+                                        </svg>
+                                        {event.location}
+                                    </span>
+                            )}
+                        </div>
+                )}
+
+                <div class="flex items-center gap-3 text-white/25 text-xs tracking-widest uppercase">
+                    <div class="h-px w-10 bg-white/15"></div>
+                    Secure your seat below
+                    <div class="h-px w-10 bg-white/15"></div>
+                </div>
+            </div>
+        </Container>
+    </Section>
+
+    <!-- Registration form -->
     <Section>
         <Container>
             <div class="max-w-2xl mx-auto py-16">
-                <h1 class="text-3xl font-black theme-heading mb-2">{event.name}</h1>
-                {event.description && <p class="text-gray-600 mb-2">{event.description}</p>}
-                {(event.date || event.location) && (
-                        <p class="text-sm text-gray-400 mb-8">
-                            {event.date}{event.date && event.location ? " · " : ""}{event.location}
-                        </p>
-                )}
-                <p class="text-gray-500 mb-10 text-sm">Fill in your details below to register your interest.</p>
+                <div class="mb-10">
+                    <h2 class="text-2xl font-black theme-heading mb-2">Confirm Your Attendance</h2>
+                    <p class="text-gray-500 text-sm">Complete the form below and our team will be in touch to confirm
+                        your place.</p>
+                </div>
 
                 <form
                         action="/api/register"
@@ -115,22 +195,18 @@ if (!event) {
                                     class="button button-teal group !px-8 w-full sm:w-auto"
                                     :disabled="status === 'loading'"
                             >
-                                <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="size-5 -rotate-45 -mt-1 inline-block mr-1 group-hover:rotate-0 transition duration-300"
-                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor"
+                                     class="size-5 -rotate-45 -mt-1 inline-block mr-1 group-hover:rotate-0 transition duration-300">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                           d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/>
                                 </svg>
-                                <span x-text="status === 'loading' ? 'Submitting…' : 'Register'">Register</span>
+                                <span x-text="status === 'loading' ? 'Submitting…' : 'Secure My Seat'">Secure My Seat</span>
                             </button>
 
                             <p x-show="status === 'success'" x-cloak class="text-green-600 font-medium">
-                                Thanks for registering! We'll be in touch soon.
+                                Thank you. Your registration has been received — our team will be in touch shortly to
+                                confirm your place.
                             </p>
                             <p x-show="status === 'error'" x-cloak class="text-red-600 font-medium">
                                 Something went wrong. Please try again or contact us directly.
@@ -157,8 +233,7 @@ if (!event) {
     }
 
     .contact-input:focus {
-        --tw-ring-color: var(--theme-badge-ring);
         border-color: var(--theme-badge-ring);
-        box-shadow: 0 0 0 2px var(--tw-ring-color, transparent);
+        box-shadow: 0 0 0 2px color-mix(in srgb, var(--theme-badge-ring) 25%, transparent);
     }
 </style>
