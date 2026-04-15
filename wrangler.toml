@@ -1,6 +1,5 @@
 name = "abmpartners-demo"
-compatibility_date = "2024-09-23"
-pages_build_output_dir = "./dist"
+compatibility_date = "2026-04-11"
 
 # Set secrets via: npx wrangler secret put RESEND_API_KEY
 # Optional overrides (set as secrets too if desired):
@@ -15,4 +14,3 @@ migrations_dir = "migrations"
 
 [assets]
 directory = "./dist" # Where Astro outputs static files
-binding = "WEB_ASSETS"   # Required for the Worker to access these assets
