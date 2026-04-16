@@ -28,12 +28,21 @@ if (!event) {
     console.log('no event found, 404');
     return new Response(null, {status: 404});
 }
+
+const formattedDate = event.date
+    ? new Date(event.date + 'T00:00:00').toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    })
+    : null;
 ---
 
 <Layout
         title={`Register — ${event.name}`}
         pageTitle={`Register — ${event.name}`}
-        description={event.description ?? `You have been personally selected to attend ${event.name}. Secure your seat.`}
+        description={event.description ?? `You have been selected to attend ${event.name}. Secure your seat.`}
 >
     <!-- Hero -->
     <Section class:list={"relative"} data-dark-hero>
@@ -79,16 +88,16 @@ if (!event) {
                 </p>
 
                 <!-- Event meta -->
-                {(event.date || event.location) && (
+                {(formattedDate || event.location) && (
                         <div class="flex flex-wrap gap-6 text-sm text-white/45 mb-12">
-                            {event.date && (
+                            {formattedDate && (
                                     <span class="flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="size-4 text-amber-400/70">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                   d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
                                         </svg>
-                                        {event.date}
+                                        {formattedDate}
                                     </span>
                             )}
                             {event.location && (
@@ -120,7 +129,7 @@ if (!event) {
         <Container>
             <div class="max-w-2xl mx-auto py-16">
                 <div class="mb-10">
-                    <h2 class="text-2xl font-black theme-heading mb-2">Confirm Your Attendance</h2>
+                    <h2 class="text-2xl font-black theme-heading mb-2">Accept your invitation</h2>
                     <p class="text-gray-500 text-sm">Complete the form below and our team will be in touch to confirm
                         your place.</p>
                 </div>
@@ -169,8 +178,7 @@ if (!event) {
                                 <input type="text" name="company" id="company" required class="contact-input"/>
                             </div>
                             <div>
-                                <label for="position" class="block text-sm font-semibold theme-heading mb-2">Position /
-                                    Title <span class="text-red-500">*</span></label>
+                                <label for="position" class="block text-sm font-semibold theme-heading mb-2">Job Title<span class="text-red-500">*</span></label>
                                 <input type="text" name="position" id="position" required class="contact-input"/>
                             </div>
                         </div>
