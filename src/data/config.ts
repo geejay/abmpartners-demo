@@ -1,7 +1,7 @@
 // Global variables
 export const siteLang = "en-US";
 export const siteCurrency = "USD";
-export const siteDomain = "abmartners.com.au";
+export const siteDomain = "abmpartners.com.au";
 export const siteName = "ABM Partners";
 export const siteSlogan = "Corporate event management, delivered with precision.";
 export const themeColor = "#1f2937";
